@@ -1,2 +1,2 @@
 # TEMBO_ROCKET_avionics_parachute
-deploy parachute when rocket starts to fall
+Python code to deploy parachute when a rocket starts to fall
