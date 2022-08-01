@@ -7,10 +7,14 @@ current_pressure  = 0
 previous_pressure = 0
 
 """DATA"""
-def pressure():return 100000
-def altitude():return 1000
-def acceleration():return 0
-def gps():return 0
+def pressure():
+    return 100000 #default
+def altitude():
+    return 1000 #default
+def acceleration():
+    return 0 #default
+def gps():
+    return 0 #default
 """DATA"""
 
 def rocket_is_launched():
@@ -24,10 +28,11 @@ def deploy_parachute():
 
 def altitude_is_decreasing():#by significant margin
     alt1 = altitude()
-    time.sleep(1)#5m decline
+    time.sleep(1)
     alt2 = altitude()
+    time.sleep(1)
     alt3 = altitude()
-    time.sleep(1)#5m decline
+    time.sleep(1)
     alt4 = altitude()
     return ((alt2<alt1)and(alt4<alt3))
 
@@ -35,18 +40,21 @@ def pressure_is_increasing():#by significant margin
     pres1 = pressure()
     time.sleep(1)
     pres2 = pressure()
+    time.sleep(1)
     pres3 = pressure()
     time.sleep(1)
     pres4 = pressure()
     return ((pres2>pres1)and(pres4>pres3))
    
-
-runMAIN = True
-FLIGHT  = False
-while runMAIN:
-    if( rocket_is_launched() ):
-        FLIGHT = True
-        while FLIGHT:
-            if( altitude_is_decreasing() and pressure_is_increasing() ):#accel=0
-                deploy_parachute()
-                    
+try:
+    runMAIN = True
+    FLIGHT  = False
+    while runMAIN:
+        if( rocket_is_launched() ):
+            FLIGHT = True
+            while FLIGHT:
+                if( altitude_is_decreasing() and pressure_is_increasing() ):#accel=0
+                    deploy_parachute()
+except:
+    # what to do if a problem occurs!!!
+    
